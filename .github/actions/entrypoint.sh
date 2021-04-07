@@ -10,6 +10,7 @@ echo "Starting Jekyll build"
 ####################################################
 
 chmod -R a+w /github/workspace
+chmod a+w /github/workspace/Gemfile.lock
 
 ####################################################
 # Build the Jekyll site
