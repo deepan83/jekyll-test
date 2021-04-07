@@ -9,8 +9,7 @@ echo "Starting Jekyll build"
 # Set workspace permissions
 ####################################################
 
-chmod -R a+w /github/workspace
-chmod a+w /github/workspace/Gemfile.lock
+chmod -R 777 /github/workspace
 
 ####################################################
 # Build the Jekyll site
