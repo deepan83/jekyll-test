@@ -16,7 +16,7 @@ chmod a+w /github/workspace/Gemfile.lock
 # Build the Jekyll site
 ####################################################
 
-jekyll build --trace
+sudo jekyll build --trace
 
 ####################################################
 # Build completed
