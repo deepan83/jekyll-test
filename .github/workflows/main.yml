@@ -24,9 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: Build
-        uses: ./.github/actions/
           
   deployProduction:
     name: Deploy to production
@@ -35,6 +32,8 @@ jobs:
     environment: 
       name: production
     steps:
+      - name: Build
+        uses: ./.github/actions/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -44,7 +43,7 @@ jobs:
 
       - name: Sync output to S3
         run: |
-          aws s3 sync $GITHUB_WORKSPACE/_site/ s3://deepan-jekyll-test --delete
+          aws s3 sync ./_site/ s3://deepan-jekyll-test --delete
 
   deployPreview:
     name: Deploy to preview
@@ -53,6 +52,8 @@ jobs:
     environment: 
       name: preview
     steps:
+      - name: Build
+        uses: ./.github/actions/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -62,5 +63,5 @@ jobs:
 
       - name: Sync output to S3
         run: |
-          aws s3 sync $GITHUB_WORKSPACE/_site/ s3://deepan-jekyll-test --delete
+          aws s3 sync ./_site/ s3://deepan-jekyll-test --delete
     
