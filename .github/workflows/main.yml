@@ -24,6 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Build
+        uses: ./.github/actions/
+      
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: build-output
+          path: ./_site
           
   deployProduction:
     name: Deploy to production
@@ -32,8 +40,6 @@ jobs:
     environment: 
       name: production
     steps:
-      - name: Build
-        uses: ./.github/actions/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -52,8 +58,6 @@ jobs:
     environment: 
       name: preview
     steps:
-      - name: Build
-        uses: ./.github/actions/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
