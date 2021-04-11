@@ -61,6 +61,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build-output
+          path: ./build-output
       - name: Display structure of downloaded files
         run: ls -R
       - name: Configure AWS credentials
@@ -72,5 +73,5 @@ jobs:
 
       - name: Sync output to S3
         run: |
-          aws s3 sync ./_site/ s3://deepan-jekyll-test --delete
+          aws s3 sync ./build-output s3://deepan-jekyll-test --delete
     
