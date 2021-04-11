@@ -28,7 +28,7 @@ jobs:
         run: echo "baseurl:'/test-blog'"  > _branch.yml
       
       - name: print files
-        run: ls -r
+        run: ls -lha
         
       - name: Build
         uses: ./.github/actions/
