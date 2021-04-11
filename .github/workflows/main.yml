@@ -44,7 +44,7 @@ jobs:
 
       - name: Sync output to S3
         run: |
-          aws s3 sync ./_site/ s3://deepan-jekyll-test --delete
+          aws s3 sync $GITHUB_WORKSPACE/_site/ s3://deepan-jekyll-test --delete
 
   deployPreview:
     name: Deploy to preview
@@ -62,5 +62,5 @@ jobs:
 
       - name: Sync output to S3
         run: |
-          aws s3 sync ./_site/ s3://deepan-jekyll-test --delete
+          aws s3 sync $GITHUB_WORKSPACE/_site/ s3://deepan-jekyll-test --delete
     
